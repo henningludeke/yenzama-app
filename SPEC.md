@@ -303,7 +303,7 @@ The MVP demo must be pre-populated with realistic South African dummy data. Gene
 - Service worker for offline shell caching
 - Add to Home Screen prompt
 - Responsive: designed for mobile, works on desktop
-- Target: Chrome on Android (dominant SA browser)
+- Target: Chrome on Android (dominant SA browser), primary test device: Honor 400 (360px CSS width)
 
 ### 7.3 Project Structure
 
@@ -392,10 +392,16 @@ yenzama-app/
 
 ### 9.1 Design Principles
 
-- **Mobile-first:** all screens designed for 375px width, scale up gracefully
+- **Mobile-first:** primary design target is **360px CSS width** (Honor 400 — 1080x2412 @ 3x DPR, 6.7" screen). This is the demo device. All screens must look pixel-perfect at 360px.
+- **Responsive breakpoints (Tailwind defaults):**
+  - `360px` — base (Honor 400, most Android devices)
+  - `sm: 640px` — large phones in landscape
+  - `md: 768px` — tablets
+  - `lg: 1024px` — desktop
 - **Thumb-friendly:** primary actions in bottom 60% of screen, min 44px tap targets
 - **Low data:** compress images, lazy load, minimal JS bundle
 - **Multilingual-ready:** all strings in a constants file (English only for MVP, but structure for i18n)
+- **Safe areas:** respect notch/punch-hole camera cutouts — use `env(safe-area-inset-top)` etc. in CSS for status bar overlap
 
 ### 9.2 Brand / Theme
 
@@ -451,7 +457,7 @@ The demo is considered complete when:
 - [ ] Job lifecycle flows from Posted through to Reviewed
 - [ ] Location-based filtering returns relevant results
 - [ ] The app installs as a PWA on Android Chrome
-- [ ] All screens render correctly on mobile viewport (375px)
+- [ ] All screens render correctly on mobile viewport (360px — Honor 400 baseline) and scale up to desktop
 - [ ] Seed data is pre-loaded and the demo runs without manual setup
 
 ---
