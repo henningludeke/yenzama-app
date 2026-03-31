@@ -1,7 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { seedData } from '../lib/seed/seedData';
 
 const Landing: React.FC = () => {
+  const [seeding, setSeeding] = useState(false);
+
+  const handleSeed = async () => {
+    setSeeding(true);
+    try {
+      await seedData();
+      alert("Database seeded successfully!");
+    } catch (error) {
+      console.error(error);
+      alert("Seeding failed. Check console.");
+    } finally {
+      setSeeding(false);
+    }
+  };
+
   return (
     <div className="flex flex-col items-center justify-between min-h-screen bg-primary p-8 text-center">
       <div className="flex-1 flex flex-col items-center justify-center pt-20">
@@ -22,6 +38,16 @@ const Landing: React.FC = () => {
         <Link to="/auth" className="text-white font-bold hover:underline py-2">
           I already have an account
         </Link>
+
+        {import.meta.env.DEV && (
+          <button
+            onClick={handleSeed}
+            disabled={seeding}
+            className="mt-4 bg-white/10 border border-white/20 text-white/60 text-[10px] py-2 rounded uppercase tracking-widest disabled:opacity-50"
+          >
+            {seeding ? "Seeding..." : "Seed Database (Dev Only)"}
+          </button>
+        )}
       </div>
 
       <div className="pb-safe">

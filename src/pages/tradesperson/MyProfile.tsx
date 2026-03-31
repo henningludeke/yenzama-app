@@ -34,7 +34,7 @@ const MyProfile: React.FC = () => {
             {['Plumbing', 'Electrical', 'Building', 'Painting'].map((trade) => (
               <button
                 key={trade}
-                className={`py-2 px-4 rounded-pill text-xs font-bold uppercase tracking-widest \${
+                className={`py-2 px-4 rounded-pill text-xs font-bold uppercase tracking-widest ${
                   trade === 'Plumbing' ? 'bg-primary text-white' : 'bg-surface text-text-secondary'
                 }`}
               >

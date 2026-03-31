@@ -24,7 +24,7 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onPhotoUpload, maxPhotos = 5,
     <div className="flex flex-wrap gap-2">
       {currentPhotos.map((photo, index) => (
         <div key={index} className="w-20 h-20 bg-gray-100 rounded-card overflow-hidden">
-          <img src={photo} alt={`Uploaded \${index}`} className="w-full h-full object-cover" />
+          <img src={photo} alt={`Uploaded ${index}`} className="w-full h-full object-cover" />
         </div>
       ))}
       {currentPhotos.length < maxPhotos && (

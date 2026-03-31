@@ -35,7 +35,7 @@ const PostJob: React.FC = () => {
             {['Urgent', 'This Week', 'Flexible'].map((urgency) => (
               <button
                 key={urgency}
-                className={`flex-1 py-3 px-2 rounded-pill text-[10px] font-bold uppercase tracking-widest \${
+                className={`flex-1 py-3 px-2 rounded-pill text-[10px] font-bold uppercase tracking-widest ${
                   urgency === 'Urgent' ? 'bg-error/10 text-error border-2 border-error/20' : 'bg-surface text-text-secondary'
                 }`}
               >
