@@ -20,7 +20,15 @@ export default {
         button: "8px",
         pill: "24px",
       },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+      },
+      screens: {
+        '360': '360px',
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar-hide'),
+  ],
 }
