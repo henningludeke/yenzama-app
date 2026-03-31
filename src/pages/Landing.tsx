@@ -1,7 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { seedDatabase } from '../lib/seed/seedData';
 
 const Landing: React.FC = () => {
+  const [isSeeding, setIsSeeding] = useState(false);
+
+  const handleSeed = async () => {
+    if (window.confirm('This will seed the database with dummy data. Continue?')) {
+      setIsSeeding(true);
+      try {
+        await seedDatabase();
+        alert('Database seeded successfully!');
+      } catch (error) {
+        console.error('Seeding failed:', error);
+        alert('Seeding failed. Check console for details.');
+      } finally {
+        setIsSeeding(false);
+      }
+    }
+  };
+
   return (
     <div className="flex flex-col items-center justify-between min-h-screen bg-primary p-8 text-center">
       <div className="flex-1 flex flex-col items-center justify-center pt-20">
@@ -24,7 +42,16 @@ const Landing: React.FC = () => {
         </Link>
       </div>
 
-      <div className="pb-safe">
+      <div className="pb-safe flex flex-col items-center gap-4">
+        {import.meta.env.DEV && (
+          <button
+            onClick={handleSeed}
+            disabled={isSeeding}
+            className="text-white/60 text-xs font-bold hover:text-white transition-colors bg-white/10 px-4 py-2 rounded-full border border-white/20"
+          >
+            {isSeeding ? 'SEEDING...' : 'DEBUG: SEED DATABASE'}
+          </button>
+        )}
         <p className="text-white/40 text-xs font-mono uppercase tracking-widest">Version 1.0 — March 2026</p>
       </div>
     </div>
