@@ -13,12 +13,12 @@ const DeviceFrame: React.FC<DeviceFrameProps> = ({ children }) => {
       </div>
 
       {/* Desktop view: centered phone frame */}
-      <div className="hidden md:block relative w-[360px] h-[780px] bg-white rounded-[3rem] shadow-2xl border-[12px] border-gray-900 overflow-hidden">
+      <div className="hidden md:block relative w-[360px] h-[800px] bg-white rounded-[3rem] shadow-2xl border-[12px] border-gray-900 overflow-hidden">
         {/* Notch / Camera cutout */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-7 bg-gray-900 rounded-b-2xl z-20"></div>
 
         {/* Content area */}
-        <div className="w-full h-full overflow-y-auto overflow-x-hidden scrollbar-hide pt-safe pb-safe">
+        <div className="relative w-full h-full overflow-hidden pt-safe pb-safe">
           {children}
         </div>
 
