@@ -3,12 +3,29 @@ import { Link } from 'react-router-dom';
 
 const Landing: React.FC = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-primary text-white p-6 text-center">
-      <h1 className="text-4xl font-bold mb-4 tracking-tight">YENZAMA</h1>
-      <p className="text-lg mb-8 opacity-90 max-w-[280px]">"Let's do it together" — Connecting SA with skilled trades.</p>
-      <div className="flex flex-col gap-4 w-full max-w-[280px]">
-        <Link to="/auth" className="bg-white text-primary font-bold py-3 px-6 rounded-button shadow-lg block">Sign In</Link>
-        <Link to="/auth" className="bg-secondary text-white font-bold py-3 px-6 rounded-button shadow-lg block">Get Started</Link>
+    <div className="flex flex-col items-center justify-between min-h-screen bg-primary p-8 text-center">
+      <div className="flex-1 flex flex-col items-center justify-center pt-20">
+        <div className="w-24 h-24 bg-white/20 backdrop-blur-md rounded-3xl flex items-center justify-center mb-8 shadow-inner">
+          <span className="text-4xl">🤝</span>
+        </div>
+        <h1 className="text-5xl font-extrabold text-white mb-4 tracking-tighter">YENZAMA</h1>
+        <p className="text-lg text-white/90 font-medium max-w-[280px] leading-relaxed italic">
+          "Let's do it together"
+        </p>
+        <p className="text-white/80 mt-2 font-medium">Connecting SA with skilled trades</p>
+      </div>
+
+      <div className="w-full flex flex-col gap-4 mb-8">
+        <Link to="/auth" className="btn-secondary w-full text-lg shadow-xl">
+          Get Started
+        </Link>
+        <Link to="/auth" className="text-white font-bold hover:underline py-2">
+          I already have an account
+        </Link>
+      </div>
+
+      <div className="pb-safe">
+        <p className="text-white/40 text-xs font-mono uppercase tracking-widest">Version 1.0 — March 2026</p>
       </div>
     </div>
   );
