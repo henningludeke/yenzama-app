@@ -338,7 +338,8 @@ yenzama-app/
 │   │   │   ├── BottomNav.tsx
 │   │   │   ├── StatusBadge.tsx
 │   │   │   ├── StarRating.tsx
-│   │   │   └── PhotoUpload.tsx
+│   │   │   ├── PhotoUpload.tsx
+│   │   │   └── DeviceFrame.tsx
 │   │   ├── TradespersonCard.tsx
 │   │   ├── JobCard.tsx
 │   │   └── QuoteCard.tsx
@@ -418,7 +419,18 @@ yenzama-app/
 | Font | Inter (Google Fonts) or system default |
 | Border radius | 12px (cards), 8px (buttons), 24px (pills) |
 
-### 9.3 Key UI Components
+### 9.3 Desktop Phone Frame (Demo Mode)
+
+When viewed on screens wider than `md` (768px+), the app should render inside a **phone frame mockup** centred on the screen with a neutral background. This is for demo/presentation purposes.
+
+- **Frame:** CSS-only phone shell (rounded corners, notch/punch-hole cutout, subtle shadow) — no images needed
+- **Inner viewport:** 360px wide × 800px tall (Honor 400 proportions), scrollable inside the frame
+- **Background:** light grey (`#E5E5E5`) or subtle gradient behind the phone frame
+- **On actual mobile (below 768px):** the phone frame is hidden entirely, app renders full-screen as normal
+- **Implementation:** create a `DeviceFrame.tsx` wrapper component that conditionally wraps the app content. Use a Tailwind `hidden md:flex` pattern to toggle the frame.
+- **Status bar:** include a fake status bar at the top of the frame showing time, battery, and signal icons (static/decorative)
+
+### 9.4 Key UI Components
 
 - **TradespersonCard:** photo, name, trade badge, stars, review count, distance, verified tick
 - **JobCard:** title, category pill, urgency badge, suburb, time ago, photo thumbnail
